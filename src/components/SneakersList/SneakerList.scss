@@ -1,0 +1,11 @@
+#sneaker-content{
+    display: flex;
+    flex-direction: column;
+}
+
+#sneaker-list{
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    list-style: none;
+}
