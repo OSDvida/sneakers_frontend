@@ -11,6 +11,15 @@ function SneakerList() {
     const [sneakers, setSneakers] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
+    useEffect(() => {
+        getSneakers()
+    }, [])
+
+    function handleDeleteSneaker(id) {
+        axios.delete(`${apiUrl}sneakers/${id}`)
+        .then(() => getSneakers())
+    }
+
     function getSneakers() {
         setIsLoading(true)
 
@@ -19,9 +28,6 @@ function SneakerList() {
             .finally(() => setIsLoading(false))
     }
 
-    useEffect(() => {
-        getSneakers()
-    }, [])
 
     if (isLoading) return "Carregando..."
 
@@ -33,8 +39,11 @@ function SneakerList() {
                 <ul id='sneaker-list'>
                     {sneakers.map((sneaker) => <SneakerCard
                         key={sneaker.id}
+                        id={sneaker.id}
                         imagePath={sneaker.imagePath}
-                        name={sneaker.name} />
+                        name={sneaker.name}
+                        handleDeleteSneaker={handleDeleteSneaker}
+                        />
                     )}
                 </ul>
 

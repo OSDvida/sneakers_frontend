@@ -28,7 +28,6 @@
 
 #items-container-start {
   display: flex;
-  width: 300px;
   justify-content: space-between;
   height: 100%;
   align-items: center;
@@ -36,6 +35,7 @@
 
   li {
     cursor: pointer;
+    margin-right: 40px;
   }
 }
 
